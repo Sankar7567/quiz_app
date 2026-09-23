@@ -252,9 +252,23 @@ export default function App() {
     <div className={`min-h-screen transition-colors duration-200 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-800'} flex flex-col justify-between font-sans antialiased selection:bg-indigo-500 selection:text-white`}>
       
       {}
-      <header className={`sticky top-0 z-30 backdrop-blur-md border-b transition-colors ${isDarkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white/80 border-slate-200'}`}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
+      <header className={`sticky top-0 z-30 border-b transition-colors ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} `}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-16 relative overflow-hidden">
+          <img
+            src="/assets/quiz-header.png"
+            alt="Quiz Header Background"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.onerror = null;
+              // Create a gradient fallback if image fails to load
+              e.target.style.background = `linear-gradient(to right, ${isDarkMode ? '#4f46e5' : '#3b82f6'}, ${isDarkMode ? '#7c3aed' : '#1d4ed8'})`;
+            }}
+          />
+
+          {/* Overlay for better text readability in both themes */}
+          <div className={`absolute inset-0 bg-${isDarkMode ? 'black/40' : 'white/30'} `}></div>
+
+          <div className="relative flex items-center space-x-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
               <Brain className="w-5 h-5" />
             </div>
@@ -264,24 +278,12 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <img
-              src="/assets/quiz-header.png"
-              alt="Quiz Header Logo"
-              className={`h-10 w-auto opacity-90 hover:opacity-100 transition-opacity ${isDarkMode ? 'brightness-110 contrast-105' : ''}`}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "/favicon.svg";
-              }}
-            />
-          </div>
-
-          <div className="flex items-center space-x-2">
+          <div className="relative flex items-center space-x-2">
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               className={`p-2.5 rounded-xl border transition-all ${
-                isDarkMode 
-                  ? 'border-slate-800 bg-slate-900 text-amber-400 hover:text-amber-300 hover:border-slate-700' 
+                isDarkMode
+                  ? 'border-slate-800 bg-slate-900 text-amber-400 hover:text-amber-300 hover:border-slate-700'
                   : 'border-slate-200 bg-white text-slate-600 hover:text-indigo-600 hover:border-slate-300'
               }`}
               title="Toggle Theme"
