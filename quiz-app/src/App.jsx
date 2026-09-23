@@ -252,7 +252,7 @@ export default function App() {
     <div className={`min-h-screen transition-colors duration-200 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-800'} flex flex-col justify-between font-sans antialiased selection:bg-indigo-500 selection:text-white`}>
       
       {}
-      <header className={`sticky top-0 z-30 border-b transition-colors ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} `}>
+      <header className={`z-30 border-b transition-colors ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} `}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 h-40 relative overflow-hidden">
           <img
             src="/assets/quiz-header.png"
