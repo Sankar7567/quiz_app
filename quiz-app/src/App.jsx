@@ -264,6 +264,18 @@ export default function App() {
             </div>
           </div>
 
+          <div className="flex items-center space-x-4">
+            <img
+              src="/assets/quiz-header.png"
+              alt="Quiz Header Logo"
+              className={`h-10 w-auto opacity-90 hover:opacity-100 transition-opacity ${isDarkMode ? 'brightness-110 contrast-105' : ''}`}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/favicon.svg";
+              }}
+            />
+          </div>
+
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
