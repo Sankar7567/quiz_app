@@ -253,11 +253,11 @@ export default function App() {
       
       {}
       <header className={`sticky top-0 z-30 border-b transition-colors ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} `}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-16 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-32 relative overflow-hidden">
           <img
             src="/assets/quiz-header.png"
             alt="Quiz Header Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
             onError={(e) => {
               e.target.onerror = null;
               // Create a gradient fallback if image fails to load
@@ -266,39 +266,41 @@ export default function App() {
           />
 
           {/* Overlay for better text readability in both themes */}
-          <div className={`absolute inset-0 bg-${isDarkMode ? 'black/40' : 'white/30'} `}></div>
+          <div className={`absolute inset-0 bg-${isDarkMode ? 'black/30' : 'white/20'} `}></div>
 
-          <div className="relative flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
-              <Brain className="w-5 h-5" />
+          <div className="relative flex flex-col items-center sm:flex-row sm:items-center space-x-4 sm:space-x-6 pt-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+                <Brain className="w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="font-bold text-xl tracking-tight sm:text-2xl">DevQuiz</h1>
+                <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>MERN & Web Development</p>
+              </div>
             </div>
-            <div>
-              <h1 className="font-bold text-lg tracking-tight">DevQuiz</h1>
-              <p className={`text-xs ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>MERN & Web Development</p>
-            </div>
-          </div>
 
-          <div className="relative flex items-center space-x-2">
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`p-2.5 rounded-xl border transition-all ${
-                isDarkMode
-                  ? 'border-slate-800 bg-slate-900 text-amber-400 hover:text-amber-300 hover:border-slate-700'
-                  : 'border-slate-200 bg-white text-slate-600 hover:text-indigo-600 hover:border-slate-300'
-              }`}
-              title="Toggle Theme"
-            >
-              {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-            {isSubmitted && (
+            <div className="relative flex items-center space-x-2">
               <button
-                onClick={handleRestart}
-                className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm flex items-center gap-1.5"
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`p-2 rounded-xl border transition-all ${
+                  isDarkMode
+                    ? 'border-slate-800 bg-slate-900 text-amber-400 hover:text-amber-300 hover:border-slate-700'
+                    : 'border-slate-200 bg-white text-slate-600 hover:text-indigo-600 hover:border-slate-300'
+                }`}
+                title="Toggle Theme"
               >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Restart</span>
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-            )}
+              {isSubmitted && (
+                <button
+                  onClick={handleRestart}
+                  className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm flex items-center gap-1"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  <span>Restart</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </header>
