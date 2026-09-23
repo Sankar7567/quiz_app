@@ -253,11 +253,11 @@ export default function App() {
       
       {}
       <header className={`sticky top-0 z-30 border-b transition-colors ${isDarkMode ? 'border-slate-800' : 'border-slate-200'} `}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-32 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 h-40 relative overflow-hidden">
           <img
             src="/assets/quiz-header.png"
             alt="Quiz Header Background"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-contain object-center"
             onError={(e) => {
               e.target.onerror = null;
               // Create a gradient fallback if image fails to load
